@@ -11,9 +11,14 @@
   returns the file descriptor for the upstream pipe.
   =========================*/
 int server_handshake(int *to_client) {
-  printf("Sorry, I was sick and did not learn this. I'll get the notes from someone and finish this soon")
-
-  return 0;
+	mkfifo("wkp",0666);
+	printf("made wkp");
+	int fd = open("wkp", O_RDONLY);
+	printf("opened wkp\n");
+	char * client;
+	read(fd,client,30);
+	printf("read %s\n", client);
+	return 0;
 }
 
 
@@ -27,7 +32,9 @@ int server_handshake(int *to_client) {
   returns the file descriptor for the downstream pipe.
   =========================*/
 int client_handshake(int *to_server) {
-  printf("Sorry, I was sick and did not learn this. I'll get the notes from someone and finish this soon")
-
-  return 0;
+	mkfifo("private",0666);
+	int fd = open("wkp", O_WRONLY);
+	char * s = "private";
+	write(fd, s, strlen(s));
+	return 0;
 }
