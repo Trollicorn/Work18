@@ -12,7 +12,7 @@
   =========================*/
 int server_handshake(int *to_client) {
 	int n = mkfifo("wkp",0666);
-	printf("made wkp");
+	printf("made wkp\n");
 	
 	int fd = open("wkp", O_RDONLY);
 	printf("opened wkp\n");
